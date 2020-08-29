@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Projects{% endblock %}
+{% block styles %}<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">{% endblock %}
+
+{% block search %}
+    <div class="search-form">
+            <form action="{% url 'index' %}" method="GET">
+                <input type="text" name="search">
+                <input type="submit" value="Найти">
+            </form>
+        </div>
+{% endblock %}
+{% block content %}
+<h1>Проекты:</h1>
+    <div class = "tasks">
+        {% for poll in polls %}
+            <div class="card">
+                <div class="card-content">
+{#                <h3><a href="{% url 'project_view' project.pk %}" class="card-button">{{ project.name }}</a></h3>#}
+                    <h3>{{ poll.question }}</h3>
+                <p>Дата начала: </p>
+                <p>{{ poll.date_create }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    </div>
+{% endblock %}
