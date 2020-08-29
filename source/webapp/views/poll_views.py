@@ -75,6 +75,7 @@ class PollDeleteView(DeleteView):
     model = Poll
     success_url = reverse_lazy('index')
 
+
 class PollUpdateView(UpdateView):
     template_name = 'polls/poll_update.html'
     form_class = PollForm

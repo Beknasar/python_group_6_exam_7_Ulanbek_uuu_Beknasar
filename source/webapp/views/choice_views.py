@@ -21,14 +21,14 @@ class ChoiceCreateView(CreateView):
         return redirect('poll_view', pk=poll.pk)
 
 
-# class TaskUpdateView(UpdateView):
-#     template_name = 'task/task_update.html'
-#     form_class = TaskForm
-#     model = Tasks
-#     context_object_name = 'task'
-#
-#     def get_success_url(self):
-#         return reverse('task_view', kwargs={'pk': self.object.pk})
+class ChoiceUpdateView(UpdateView):
+    template_name = 'choices/choice_update.html'
+    form_class = ChoiceForm
+    model = Choice
+    context_object_name = 'choice'
+
+    def get_success_url(self):
+        return reverse('poll_view', kwargs={'pk': self.object.poll.pk})
 #
 #
 # class TaskDeleteView(DeleteView):
