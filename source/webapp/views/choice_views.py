@@ -29,9 +29,9 @@ class ChoiceUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('poll_view', kwargs={'pk': self.object.poll.pk})
-#
-#
-# class TaskDeleteView(DeleteView):
-#     template_name = 'task/task_delete.html'
-#     model = Tasks
-#     success_url = reverse_lazy('index')
+
+
+class ChoiceDeleteView(DeleteView):
+    template_name = 'choices/choice_delete.html'
+    model = Choice
+    success_url = reverse_lazy('index')

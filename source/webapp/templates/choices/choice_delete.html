@@ -3,19 +3,16 @@
 {% block title %}Delete{% endblock %}
 
 {% block menu %}
-    <li><a href="{% url 'task_view' tasks.pk %}">Отмена</a></li>
+    <li><a href="{% url 'poll_view' choice.poll.pk %}">Отмена</a></li>
 {% endblock %}
 
 {% block content %}
-    <h1>Вы уверены, что хотите удалить задачу "{{ tasks.summary }}"?</h1>
-    <p>Type: {% for type in tasks.types.all %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %}. </p>
-    <p>Status: {{ task.status }}</p>
-    <p>Date create: {{ tasks.task_create }}</p>
-    <form action="{% url "task_delete" tasks.pk %}" method="post">
+    <h1>Вы уверены, что хотите удалить вариант?"</h1>
+    <form action="{% url "choice_delete" choice.pk %}" method="post">
         {% csrf_token %}
         <button type="submit" value="Да" class="button accept">Подтвердить</button>
-        <a href="{% url 'task_view' tasks.pk %}" class="button cancel">Отмена</a>
+        <a href="{% url 'poll_view' choice.poll.pk %}" class="button cancel">Отмена</a>
     </form>
-    <h3>Содержимое статьи: </h3>
-    <p>{{ tasks.description }}</p>
+    <h3>Содержимое варианта: </h3>
+    <p class="pre">{{ choice.text }}</p>
 {% endblock %}

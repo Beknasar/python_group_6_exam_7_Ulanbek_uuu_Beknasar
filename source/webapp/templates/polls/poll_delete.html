@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Вы уверены, что хотите удалить опрос "{{ poll.question }}"?</h1>
+    <h1>Вы уверены, что хотите удалить опрос?</h1>
     <p>Date create: {{ poll.date_create }}</p>
     <form action="{% url "poll_delete" poll.pk %}" method="post">
         {% csrf_token %}
         <button type="submit" value="Да" class="button accept">Подтвердить</button>
         <a href="{% url 'poll_view' poll.pk %}" class="button cancel">Отмена</a>
     </form>
+    <h3>Содержимое опроса:</h3>
+    <p class="pre">{{ poll.question }}"</p>
 {% endblock %}

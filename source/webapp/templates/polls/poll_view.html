@@ -18,10 +18,12 @@
         {% endif %}
         {% for choice in choices %}
             <div class="box">
-{#                <a href="{% url 'task_delete' task.pk %}" ><i class="far fa-trash-alt"></i></a>#}
-                <a href="{% url 'choice_update' choice.pk %}" ><i class="far fa-edit"></i></a><br/>
-{#                <h3><a href="/tasks/{{ task.pk }}" class="card-button">{{ task.summary }}</a></h3>#}
-                <p>{{ choice.text }}</p>
+                <p>
+                    {{ choice.text }}
+                    <a href="{% url 'choice_update' choice.pk %}" ><i class="far fa-edit"></i></a>
+                    <a href="{% url 'choice_delete' choice.pk %}" ><i class="far fa-trash-alt"></i></a>
+                </p>
+                <br/>
             </div>
         {% empty %}
             <p>Нет вариантов</p>
