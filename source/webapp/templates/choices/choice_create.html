@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create{% endblock %}
+
+{% block content %}
+<h1>Create Choice</h1>
+
+        {% include 'partial/form.html' with form_method='post' %}
+{#         {% include 'partial/form_field.html' with field=form.title %}#}
+{#         {% include 'partial/form_field.html' with field=form.description %}#}
+{#         {% include 'partial/form_field.html' with field=form.date %}#}
+{#         {% include 'partial/form_field.html' with field=form.status %}#}
+{% endblock %}
