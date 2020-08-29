@@ -6,6 +6,7 @@
     <li><a href="{% url 'poll_update' poll.pk %}">Update Poll</a></li>
     <li><a href="{% url 'poll_delete' poll.pk %}">Delete Poll</a></li>
     <li><a href="{% url 'choice_create' poll.pk %}">Add Choice</a></li>
+    <li><a href="{% url 'answer' poll.pk %}">Test</a></li>
 {% endblock %}
 {% block content %}
     <div class="box">

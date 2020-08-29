@@ -1,7 +1,9 @@
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse, reverse_lazy
+from django.views.generic.base import View
 
-from webapp.models import Poll
+from webapp.models import Poll, Choice
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.forms import SearchForm, PollForm
@@ -84,3 +86,37 @@ class PollUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('poll_view', kwargs={'pk': self.object.pk})
+
+
+class AnswerView(View):
+    data = {}
+    for choice in Choice.objects.all():
+        data.update({f'{choice.text}': int(0)})
+
+    def get(self, request, *args, **kwargs):
+
+
+        pk = self.kwargs.get('pk')
+        poll = get_object_or_404(Poll, pk=pk)
+        return render(request, 'answer.html', context={'poll': poll})
+
+    def post(self, request, pk):
+        poll = get_object_or_404(Poll, pk=pk)
+        try:
+            selected_choice = poll.choices.get(pk=request.POST.get('choice'))
+            print(selected_choice.text)
+        except (KeyError, Choice.DoesNotExist):
+            return render(request, 'answer.html', {
+                'poll': poll,
+                'error_message': "You didn't select a choice.",
+            })
+        else:
+            for key, value in self.data.items():
+                if key == selected_choice.text:
+                    value +=1
+                self.data.update({key:value})
+            print(self.data)
+
+        # for key, value in self.data:
+        #     print(f'{key}  Количество: {value}')
+        return redirect('index')

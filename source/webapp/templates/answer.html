@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block styles %}<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">{% endblock %}
+{% block title %}View{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'poll_update' poll.pk %}">Update Poll</a></li>
+{#    <li><a href="{% url 'choice_create' poll.pk %}">Add Choice</a></li>#}
+    <li><a href="{% url 'poll_view' poll.pk %}">Return</a></li>
+{% endblock %}
+
+
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="box">
+        <h1 class="pre">{{ poll.question }}</h1>
+        {{ poll.choices.count }}
+        <h3>Choices:</h3>
+
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+        <form action="{% url 'answer' poll.pk %}" method='post' >
+            {% csrf_token %}
+
+            {% for choice in poll.choices.all %}
+                <div class="box">
+                    <p>
+                        <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.pk }}">
+                        <label for="choice{{ forloop.counter }}">{{ choice.text }}</label><br>
+                    </p>
+                    <br/>
+                </div>
+            {% empty %}
+                <p>Нет вариантов</p>
+            {% endfor %}
+            <input type="submit" value="{{ button_text|default:"Submit" }}"/>
+        </form>
+    </div>
+{% endblock %}
