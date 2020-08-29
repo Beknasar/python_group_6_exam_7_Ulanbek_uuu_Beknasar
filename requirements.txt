@@ -1,4 +1,4 @@
-Django==2.2
+Django==2.2git remote add origin https://github.com/Beknasar/python_group_6_exam_7_Ulanbek_uuu_Beknasar.git
 django-widget-tweaks==1.4.8
 pytz==2020.1
 sqlparse==0.3.1

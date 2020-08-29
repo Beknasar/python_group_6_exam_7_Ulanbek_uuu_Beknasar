@@ -94,11 +94,9 @@ class AnswerView(View):
         data.update({f'{choice.text}': int(0)})
 
     def get(self, request, *args, **kwargs):
-
-
         pk = self.kwargs.get('pk')
         poll = get_object_or_404(Poll, pk=pk)
-        return render(request, 'answer.html', context={'poll': poll})
+        return render(request, 'answer.html', context={'poll': poll, 'data': self.data})
 
     def post(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)

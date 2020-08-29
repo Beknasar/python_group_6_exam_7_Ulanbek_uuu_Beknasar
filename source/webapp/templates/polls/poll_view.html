@@ -13,6 +13,7 @@
         <h1 class="pre">{{ poll.question }}</h1>
         <p>Date create: {{ poll.date_create }}</p>
         <hr>
+        <p>Количество выборов: {{ poll.choices.count }}</p>
         <h3>Choices:</h3>
         {% if is_paginated %}
             {% include 'partial/pagination.html' %}
@@ -23,6 +24,13 @@
                     {{ choice.text }}
                     <a href="{% url 'choice_update' choice.pk %}" ><i class="far fa-edit"></i></a>
                     <a href="{% url 'choice_delete' choice.pk %}" ><i class="far fa-trash-alt"></i></a>
+                    {% for key, value in data %}
+                        {% if choice.text == key %}
+                            <p>Был выбран {{ value }} раз</p>
+                        {% else%}
+                            <p>Был выбран 0 раз</p>
+                        {% endif %}
+                    {% endfor %}
                 </p>
                 <br/>
             </div>

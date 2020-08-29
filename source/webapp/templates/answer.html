@@ -13,7 +13,6 @@
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <div class="box">
         <h1 class="pre">{{ poll.question }}</h1>
-        {{ poll.choices.count }}
         <h3>Choices:</h3>
 
         {% if is_paginated %}
@@ -21,7 +20,6 @@
         {% endif %}
         <form action="{% url 'answer' poll.pk %}" method='post' >
             {% csrf_token %}
-
             {% for choice in poll.choices.all %}
                 <div class="box">
                     <p>
