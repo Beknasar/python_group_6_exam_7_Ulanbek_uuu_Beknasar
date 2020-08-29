@@ -45,6 +45,7 @@ class PollView(DetailView):
 
         choices, page, is_paginated = self.paginate_tasks(self.object)
         context['choices'] = choices
+        context['data'] = data
         context['page_obj'] = page
         context['is_paginated'] = is_paginated
 
@@ -87,16 +88,15 @@ class PollUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('poll_view', kwargs={'pk': self.object.pk})
 
-
+data = {}
 class AnswerView(View):
-    data = {}
     for choice in Choice.objects.all():
         data.update({f'{choice.text}': int(0)})
 
     def get(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
         poll = get_object_or_404(Poll, pk=pk)
-        return render(request, 'answer.html', context={'poll': poll, 'data': self.data})
+        return render(request, 'answer.html', context={'poll': poll})
 
     def post(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)
@@ -109,11 +109,11 @@ class AnswerView(View):
                 'error_message': "You didn't select a choice.",
             })
         else:
-            for key, value in self.data.items():
+            for key, value in data.items():
                 if key == selected_choice.text:
                     value +=1
-                self.data.update({key:value})
-            print(self.data)
+                data.update({key:value})
+            print(data)
 
         # for key, value in self.data:
         #     print(f'{key}  Количество: {value}')

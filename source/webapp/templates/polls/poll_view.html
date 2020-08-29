@@ -24,11 +24,9 @@
                     {{ choice.text }}
                     <a href="{% url 'choice_update' choice.pk %}" ><i class="far fa-edit"></i></a>
                     <a href="{% url 'choice_delete' choice.pk %}" ><i class="far fa-trash-alt"></i></a>
-                    {% for key, value in data %}
+                    {% for key, value in data.items %}
                         {% if choice.text == key %}
                             <p>Был выбран {{ value }} раз</p>
-                        {% else%}
-                            <p>Был выбран 0 раз</p>
                         {% endif %}
                     {% endfor %}
                 </p>
