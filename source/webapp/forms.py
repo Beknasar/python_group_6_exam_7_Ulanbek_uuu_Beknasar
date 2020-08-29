@@ -12,7 +12,7 @@ class PollForm(forms.ModelForm):
         fields = ['question']
 
 
-# class ProjectForm(forms.ModelForm):
-#     class Meta:
-#         model = Choice
-#         fields = ['name', 'description', 'date_start', 'date_end']
+class ChoiceForm(forms.ModelForm):
+    class Meta:
+        model = Choice
+        fields = ['text']

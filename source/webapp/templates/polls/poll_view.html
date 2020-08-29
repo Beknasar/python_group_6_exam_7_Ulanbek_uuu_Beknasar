@@ -5,7 +5,7 @@
 {% block menu %}
     <li><a href="{% url 'poll_update' poll.pk %}">Update Poll</a></li>
     <li><a href="{% url 'poll_delete' poll.pk %}">Delete Poll</a></li>
-{#    <li><a href="{% url 'task_create' project.pk %}">Add Task</a></li>#}
+    <li><a href="{% url 'choice_create' poll.pk %}">Add Choice</a></li>
 {% endblock %}
 {% block content %}
     <div class="box">
