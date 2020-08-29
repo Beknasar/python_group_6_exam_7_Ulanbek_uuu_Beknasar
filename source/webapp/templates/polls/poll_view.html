@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}View{% endblock %}
+
+{% block menu %}
+{#    <li><a href="{% url 'project_update' project.pk %}">Update Project</a></li>#}
+    <li><a href="{% url 'poll_delete' poll.pk %}">Delete Poll</a></li>
+{#    <li><a href="{% url 'task_create' project.pk %}">Add Task</a></li>#}
+{% endblock %}
+{% block content %}
+    <div class="box">
+        <h1 class="pre">{{ poll.question }}</h1>
+        <p>Date create: {{ poll.date_create }}</p>
+        <hr>
+        <h3>Choices:</h3>
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+        {% for choice in choices %}
+            <div class="box">
+{#                <a href="{% url 'task_delete' task.pk %}" ><i class="far fa-trash-alt"></i></a>#}
+{#                <a href="{% url 'task_update' task.pk %}" ><i class="far fa-edit"></i></a><br/>#}
+{#                <h3><a href="/tasks/{{ task.pk }}" class="card-button">{{ task.summary }}</a></h3>#}
+                <p>{{ choice.text }}</p>
+            </div>
+        {% empty %}
+            <p>Нет вариантов</p>
+        {% endfor %}
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

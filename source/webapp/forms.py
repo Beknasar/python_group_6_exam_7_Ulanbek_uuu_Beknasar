@@ -9,7 +9,7 @@ class SearchForm(forms.Form):
 class PollForm(forms.ModelForm):
     class Meta:
         model = Poll
-        exclude = []
+        fields = ['question']
 
 
 # class ProjectForm(forms.ModelForm):

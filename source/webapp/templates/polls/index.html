@@ -16,9 +16,8 @@
         {% for poll in polls %}
             <div class="card">
                 <div class="card-content">
-{#                <h3><a href="{% url 'project_view' project.pk %}" class="card-button">{{ project.name }}</a></h3>#}
-                    <h3>{{ poll.question }}</h3>
-                <p>Дата начала: </p>
+                <h3><a href="{% url 'poll_view' poll.pk %}" class="card-button pre">{{ poll.question }}</a></h3>
+                <p>Дата создания: </p>
                 <p>{{ poll.date_create }}</p>
             </div>
         </div>
