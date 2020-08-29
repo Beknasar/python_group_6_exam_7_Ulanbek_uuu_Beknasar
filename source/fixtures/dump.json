@@ -1,0 +1,100 @@
+[
+{
+  "model": "webapp.poll",
+  "pk": 1,
+  "fields": {
+    "question": "\u0427\u0442\u043e \u0442\u0430\u043a\u043e\u0435 \u0432\u043e\u0434\u0430?",
+    "date_create": "2020-08-29T05:41:16.883Z"
+  }
+},
+{
+  "model": "webapp.poll",
+  "pk": 2,
+  "fields": {
+    "question": "\u0413\u0434\u0435 \u0440\u043e\u0434\u0438\u043b\u0441\u044f \u041f\u0443\u0448\u043a\u0438\u043d?",
+    "date_create": "2020-08-29T05:43:23.162Z"
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 1,
+  "fields": {
+    "text": "\u0416\u0438\u0434\u043a\u043e\u0441\u0442\u044c",
+    "poll": 1
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 2,
+  "fields": {
+    "text": "\u041c\u0435\u0442\u0430\u043b\u043b",
+    "poll": 1
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 3,
+  "fields": {
+    "text": "\u041f\u043b\u0430\u0437\u043c\u0430",
+    "poll": 1
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 4,
+  "fields": {
+    "text": "\u041d\u0435 \u0442\u0432\u043e\u0451 \u0434\u0435\u043b\u043e",
+    "poll": 1
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 5,
+  "fields": {
+    "text": "\u041c\u043e\u0441\u043a\u0432\u0430",
+    "poll": 2
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 6,
+  "fields": {
+    "text": "\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433",
+    "poll": 2
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 7,
+  "fields": {
+    "text": "\u0418\u0441\u0441\u044b\u043a-\u041a\u0443\u043b\u044c",
+    "poll": 2
+  }
+},
+{
+  "model": "webapp.choice",
+  "pk": 8,
+  "fields": {
+    "text": "\u041d\u043e\u0432\u043e\u0441\u0438\u0431\u0438\u0440\u0441\u043a",
+    "poll": 2
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$zPyFLahQDUtc$sXUG/GnhyOrVWKrELA4xOCivK3AHzK7A2+hzeME7P+o=",
+    "last_login": "2020-08-29T05:40:20.060Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-08-29T05:39:55.229Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
